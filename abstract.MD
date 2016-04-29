@@ -1,6 +1,6 @@
 
 
-## Working title: Strategies for large-scale analysis (GWAS) using Stan
+## Working title: Strategies for GWAS using Stan
 
 ## Premise
 
