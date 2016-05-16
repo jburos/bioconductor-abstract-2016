@@ -1,44 +1,17 @@
 
 
-## Working title: Strategies for GWAS using Stan
+This workshop will provide a background and introduction to Bayesian analysis using Stan and R interfaces to Stan. We will then work through 1-2 example applications in the area of cancer genomics.
 
-## Premise
+[Stan](http://mc-stan.org/) is a modern probabilistic programming language implementing full Bayesian statistical inference with MCMC sampling (NUTS, HMC), approximate Bayesian inference with variational inference (ADVI), and penalized maximum likelihood estimation with optimization (L-BFGS).
 
-How to think about GWAS where the model is complex / estimation time is non-trivial
+Potential applications include:
 
-1. Typical GWAS treats all SNPs as independent; obviously not the case. 
-  - Does it still make sense to run all X million SNPs independently on a massive HPC?
-2. It can be difficult to systematically ascertain convergence / validity of results 
-  - minimal set of criteria for initial screening of results
+* A model for mutation signature detection (cancer genomics)
+* A clonality deconvolution model (cancer genomics)
+* Evaluating (predictive) biomarkers for response to treatment (cancer genomics)
+* Analysis of RNA expression data (genomics)
+* Gene set enrichment analysis (genomics)
 
-May or may not take an implicitly Bayesian approach at the outset, although many implementations are semi-bayesian.
+Users should be familiar with basic probability theory and statistical methods. Prior experience with R is essential. Knowledge of genomic data and cancer biology will help but is not at all required.
 
-## Content 
-
-Possible approaches: 
-  1. two-stage analysis, 
-     - first-pass using RF, VB, or MLE to find potentially interesting SNPs
-     - follow up within selected set of results, modeling LD / relationship between SNPs in greater detail
-  2. model all independent (pruned) SNPs together
-     - in a big model?
-     - in a set of models, each with a subset of SNPs (ie variation of a random-forest)
-  3. model all (indep + non-indep) SNPs together, accounting for LD structure
-
-Choice may depend on set-up (ie type of outcome, etc). Classify "set ups" by their corresponding single-SNP model structure.
-
-1. For "simple" case of logistic regression or survival model without time-varying covariates
-   . no hierarchical structure in equivalent single-SNP model 
-2. for "complex" case of family data, bivariate outcome and/or longitudinal model 
-   . survival model with TVC
-   . longitudinal model
-   . family data
-
-## Goals : 
-
-1. Review methods for implementing various approaches to GWAS in Stan.  
-2. Evaluate efficiency / validity among various methods of approaching GWAS, under variety of scenarios. 
-
-## References : 
-
-1. [A Bayesian Graphical Model for Genome-wide Association Studies (GWAS)](http://research.lunenfeld.ca/mprime_briollais/files/file/A%20Bayesian%20Graphical%20Model%20for%20Genome-wide%20Association%20Studies_%20Submitted%20to%20Annals%20of%20Applied%20Statistics.pdf)
-2. [Prioritizing GWAS Results: A Review of Statistical Methods and Recommendations for Their Application](http://ac.els-cdn.com/S0002929709005321/1-s2.0-S0002929709005321-main.pdf)
+Following this workshop users will have a basic familiarity with Stan and [RStan](http://mc-stan.org/interfaces/rstan.html). They will be able to code simple models in Stan and be familiar with the process for specifying and fitting complex models in Stan. 
